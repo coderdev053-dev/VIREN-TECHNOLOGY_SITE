@@ -1,0 +1,2436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viren Technology</title>
+
+  <link rel="icon" href="images/logo.png">
+
+  <!-- YOUR CSS -->
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fff;
+      color: #111827;
+      line-height: 1.6;
+      overflow-x: hidden
+    }
+
+    :root {
+      --blue: #1565C4;
+      --blue-dark: #0D47A1;
+      --blue-light: #E8F0FE;
+      --gold: #F5A800;
+      --gold-dark: #D4920A;
+      --navy: #0A1628;
+      --off-white: #F5F7FA;
+      --gray: #6B7280;
+      --gray-lt: #E5E7EB;
+      --text2: #374151;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      line-height: 1.2;
+      font-weight: 700
+    }
+
+    p {
+      color: var(--text2)
+    }
+
+    /* NAV */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--navy);
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, .4)
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer
+    }
+
+    .logo-box {
+      width: 44px;
+      height: 44px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--navy);
+      flex-shrink: 0
+    }
+
+    .logo-name {
+      font-size: .98rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .3px;
+      line-height: 1.1
+    }
+
+    .logo-tag {
+      font-size: .62rem;
+      color: var(--gold);
+      letter-spacing: 1.2px;
+      text-transform: uppercase
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 7px 13px;
+      color: #CBD5E1;
+      text-decoration: none;
+      font-size: .83rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background .2s, color .2s
+    }
+
+    .nav-links a:hover {
+      background: rgba(245, 168, 0, .15);
+      color: var(--gold)
+    }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      margin-left: 4px
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-dark) !important
+    }
+
+    .gold-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--blue), var(--gold));
+      margin-top: 66px
+    }
+
+    /* HERO */
+    #hero {
+      background: var(--navy);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 40px 6%;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero-pat {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(21, 101, 196, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(21, 101, 196, .07) 1px, transparent 1px);
+      background-size: 52px 52px;
+      pointer-events: none
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 40%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(21, 101, 196, .2) 0%, transparent 70%);
+      pointer-events: none
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6%;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 60px 0
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 168, 0, .14);
+      border: 1px solid rgba(245, 168, 0, .35);
+      color: var(--gold);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 1.3rem
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: blink 2s ease infinite
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .25
+      }
+    }
+
+    .hero-h1 {
+      color: #fff;
+      font-size: clamp(2.2rem, 4.5vw, 3.7rem);
+      line-height: 1.1;
+      margin-bottom: 1.1rem
+    }
+
+    .hero-h1 .gld {
+      color: var(--gold)
+    }
+
+    .hero-h1 .sky {
+      color: #64B5F6
+    }
+
+    .hero-p {
+      color: #94A3B8;
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 460px;
+      margin-bottom: 2rem
+    }
+
+    .btn-g {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 12px 26px;
+      border: none;
+      border-radius: 7px;
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background .2s, transform .2s
+    }
+
+    .btn-g:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px)
+    }
+
+    .btn-w {
+      background: transparent;
+      color: #fff;
+      padding: 12px 26px;
+      border: 1.5px solid rgba(255, 255, 255, .28);
+      border-radius: 7px;
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color .2s, color .2s;
+      margin-left: 10px
+    }
+
+    .btn-w:hover {
+      border-color: var(--gold);
+      color: var(--gold)
+    }
+
+    .hero-img-frame {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(245, 168, 0, .25);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+      position: relative
+    }
+
+    .hero-img-frame img {
+      width: 100%;
+      display: block
+    }
+
+    .hero-img-badge {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 6px
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .7rem;
+      margin-top: 1rem
+    }
+
+    .hst {
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 10px;
+      padding: .9rem .5rem;
+      text-align: center
+    }
+
+    .hst-n {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1
+    }
+
+    .hst-l {
+      font-size: .62rem;
+      color: #94A3B8;
+      margin-top: 3px;
+      text-transform: uppercase;
+      letter-spacing: .8px
+    }
+
+    /* SECTIONS */
+    .sec {
+      padding: 80px 6%
+    }
+
+    .sec-inner {
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .lbl {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 6px
+    }
+
+    .lbl::before {
+      content: '';
+      width: 20px;
+      height: 3px;
+      background: var(--blue);
+      border-radius: 2px
+    }
+
+    .lbl-c {
+      justify-content: center
+    }
+
+    h2.t {
+      color: var(--navy);
+      font-size: clamp(1.7rem, 3vw, 2.5rem)
+    }
+
+    h2.t span {
+      color: var(--blue)
+    }
+
+    h2.t .gd {
+      color: var(--gold)
+    }
+
+    .sub {
+      color: var(--gray);
+      font-size: .97rem;
+      max-width: 550px;
+      margin-top: 8px;
+      line-height: 1.7
+    }
+
+    .sub-c {
+      text-align: center;
+      margin: 8px auto 0
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--off-white)
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5%;
+      align-items: center;
+      margin-top: 3rem
+    }
+
+    .about-txt p {
+      font-size: .97rem;
+      line-height: 1.8;
+      color: var(--text2);
+      margin-top: .9rem
+    }
+
+    .val-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+      margin-top: 1.8rem
+    }
+
+    .val {
+      background: #fff;
+      border: 1px solid var(--gray-lt);
+      border-top: 3px solid var(--blue);
+      border-radius: 10px;
+      padding: 1.1rem;
+      transition: box-shadow .2s
+    }
+
+    .val:hover {
+      box-shadow: 0 4px 18px rgba(21, 101, 196, .12)
+    }
+
+    .val .vi {
+      font-size: 1.4rem;
+      margin-bottom: 5px
+    }
+
+    .val h4 {
+      font-size: .84rem;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .5px
+    }
+
+    .val p {
+      font-size: .78rem;
+      color: var(--gray);
+      margin-top: 2px;
+      line-height: 1.4
+    }
+
+    .workers-photo {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .15);
+      position: relative;
+      margin-bottom: 1rem
+    }
+
+    .workers-photo img {
+      width: 100%;
+      display: block
+    }
+
+    .workers-photo .wp-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(10, 22, 40, .9));
+      padding: 1.5rem 1.2rem .8rem
+    }
+
+    .workers-photo .wp-overlay p {
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 600;
+      line-height: 1.4
+    }
+
+    .blue-card {
+      background: var(--blue);
+      border-radius: 12px;
+      padding: 1.5rem;
+      color: #fff;
+      margin-top: .8rem
+    }
+
+    .blue-card h3 {
+      color: var(--gold);
+      font-size: .72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, .15);
+      border: 1px solid rgba(255, 255, 255, .2);
+      color: #fff;
+      font-size: .76rem;
+      font-weight: 600;
+      padding: 4px 11px;
+      border-radius: 100px
+    }
+
+    .iso-bar {
+      margin-top: 1rem;
+      background: rgba(245, 168, 0, .18);
+      border: 1px solid rgba(245, 168, 0, .35);
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .iso-bar p {
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 600;
+      line-height: 1.4
+    }
+
+    /* PRODUCTS */
+    #products {
+      background: #fff
+    }
+
+    .prod-hd {
+      text-align: center;
+      margin-bottom: 3rem
+    }
+
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem
+    }
+
+    .pc {
+      border: 1.5px solid var(--gray-lt);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      cursor: pointer;
+      transition: box-shadow .25s, border-color .25s, transform .25s
+    }
+
+    .pc:hover {
+      box-shadow: 0 12px 40px rgba(21, 101, 196, .18);
+      border-color: var(--blue);
+      transform: translateY(-6px)
+    }
+
+    /* .pc-img {
+      height: 200px;
+      overflow: hidden;
+      background: #f0f4ff;
+      position: relative
+    }
+
+    .pc-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s
+    } */
+     /* PRODUCT IMAGE FIX */
+
+.pc-img{
+width:100%;
+height:220px;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#f7f7f7;
+border-radius:10px 10px 0 0;
+}
+
+.pc-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+    .pc:hover .pc-img img {
+      transform: scale(1.06)
+    }
+
+    .pc-hint {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(21, 101, 196, .88);
+      color: #fff;
+      font-size: .65rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      opacity: 0;
+      transition: opacity .2s
+    }
+
+    .pc:hover .pc-hint {
+      opacity: 1
+    }
+
+    .pc-top {
+      background: var(--blue);
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: .8rem
+    }
+
+    .pc-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, .18);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0
+    }
+
+    .pc-top h3 {
+      color: #fff;
+      font-size: .95rem;
+      line-height: 1.2
+    }
+
+    .pc-short {
+      color: var(--gold);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 2px
+    }
+
+    .pc-body {
+      padding: 1.2rem 1.4rem
+    }
+
+    .pc-desc {
+      font-size: .85rem;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--gray-lt)
+    }
+
+    .specs {
+      margin-bottom: 1rem
+    }
+
+    .sr {
+      display: flex;
+      justify-content: space-between;
+      font-size: .79rem;
+      padding: 4px 0;
+      border-bottom: 1px solid #F3F4F6
+    }
+
+    .sr:last-child {
+      border-bottom: none
+    }
+
+    .sk {
+      color: var(--gray)
+    }
+
+    .sv {
+      color: var(--navy);
+      font-weight: 600;
+      text-align: right;
+      max-width: 56%
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px
+    }
+
+    .chip {
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: .7rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 100px
+    }
+
+    /* DC CHARGER */
+    #dc {
+      background: var(--off-white)
+    }
+
+    .dc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5%;
+      margin-top: 2.8rem;
+      align-items: start
+    }
+
+    .dc-txt p {
+      font-size: .95rem;
+      line-height: 1.8;
+      color: var(--text2);
+      margin-top: .9rem
+    }
+
+    .dc-img-wrap{
+position:relative;
+margin-top:20px;
+}
+
+.dc-img-wrap img{
+width:100%;
+max-width:520px;
+border-radius:12px;
+display:block;
+}
+
+    .dc-box {
+      margin-top: 1.2rem;
+      background: var(--blue);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start
+    }
+
+    .dc-box .ic {
+      font-size: 1.3rem;
+      flex-shrink: 0
+    }
+
+    .dc-box p {
+      color: #fff;
+      font-size: .84rem;
+      line-height: 1.5
+    }
+
+    .dc-box strong {
+      color: var(--gold)
+    }
+
+    .dc-tbl {
+      background: #fff;
+      border: 1.5px solid var(--gray-lt);
+      border-radius: 12px;
+      overflow: hidden
+    }
+
+    .dc-th {
+      display: grid;
+      grid-template-columns: 40px 150px 1fr;
+      background: var(--blue);
+      padding: 9px 12px;
+      gap: 10px
+    }
+
+    .dc-th span {
+      font-size: .66rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.5px
+    }
+
+    .dc-r {
+      display: grid;
+      grid-template-columns: 40px 150px 1fr;
+      padding: 8px 12px;
+      gap: 10px;
+      border-top: 1px solid #F3F4F6;
+      align-items: center;
+      transition: background .15s
+    }
+
+    .dc-r:hover {
+      background: var(--blue-light)
+    }
+
+    .dc-n {
+      font-size: .8rem;
+      font-weight: 800;
+      color: var(--blue)
+    }
+
+    .dc-f {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--navy)
+    }
+
+    .dc-d {
+      font-size: .76rem;
+      color: var(--gray);
+      line-height: 1.35
+    }
+
+    /* SOLAR */
+    #solar {
+      background: #fff
+    }
+
+    .solar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5%;
+      margin-top: 2.8rem;
+      align-items: center
+    }
+
+    .sol-txt p {
+      font-size: .95rem;
+      line-height: 1.8;
+      color: var(--text2);
+      margin-top: .9rem
+    }
+
+    .sol-feats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+      margin-top: 1.8rem
+    }
+
+    .sf {
+      background: var(--off-white);
+      border: 1px solid var(--gray-lt);
+      border-left: 4px solid var(--gold);
+      border-radius: 10px;
+      padding: 1.1rem;
+      transition: box-shadow .2s
+    }
+
+    .sf:hover {
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .08)
+    }
+
+    .sf .sfi {
+      font-size: 1.4rem;
+      margin-bottom: 5px
+    }
+
+    .sf h4 {
+      font-size: .84rem;
+      color: var(--navy);
+      font-weight: 700
+    }
+
+    .sf p {
+      font-size: .78rem;
+      color: var(--gray);
+      margin-top: 2px;
+      line-height: 1.4
+    }
+
+    .solar-photo-card {
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .15);
+      margin-bottom: 1rem
+    }
+
+    .solar-photo-card img {
+      width: 100%;
+      display: block
+    }
+
+    .solar-photo-card .sp-label {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 6px
+    }
+
+    .ben-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .7rem;
+      margin-top: .8rem
+    }
+
+    .ben {
+      background: var(--blue);
+      border-radius: 10px;
+      padding: 1.1rem .7rem;
+      text-align: center;
+      transition: background .2s, transform .2s
+    }
+
+    .ben:hover {
+      background: var(--blue-dark);
+      transform: translateY(-3px)
+    }
+
+    .ben .bi {
+      font-size: 1.5rem;
+      margin-bottom: 5px
+    }
+
+    .ben p {
+      color: #fff;
+      font-size: .73rem;
+      font-weight: 600;
+      line-height: 1.3
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden
+    }
+
+    .contact-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: .08;
+      pointer-events: none
+    }
+
+    .contact-inner {
+      position: relative;
+      z-index: 1
+    }
+
+    #contact .lbl {
+      color: var(--gold)
+    }
+
+    #contact .lbl::before {
+      background: var(--gold)
+    }
+
+    #contact h2.t {
+      color: #fff
+    }
+
+    #contact h2.t span {
+      color: var(--gold)
+    }
+
+    #contact .sub {
+      color: #94A3B8
+    }
+
+    .con-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.3rem;
+      margin-top: 2.8rem
+    }
+
+    .cc {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 12px;
+      padding: 1.8rem 1.3rem;
+      text-align: center;
+      transition: background .2s, transform .2s, border-color .2s
+    }
+
+    .cc:hover {
+      background: rgba(255, 255, 255, .1);
+      border-color: var(--gold);
+      transform: translateY(-4px)
+    }
+
+    .cc .ci {
+      font-size: 1.9rem;
+      margin-bottom: .9rem
+    }
+
+    .cc h4 {
+      color: var(--gold);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 7px
+    }
+
+    .cc a,
+    .cc p {
+      color: #CBD5E1;
+      font-size: .88rem;
+      text-decoration: none;
+      line-height: 1.5
+    }
+
+    .cc a:hover {
+      color: var(--gold)
+    }
+
+    .cta-strip {
+      margin-top: 2rem;
+      background: var(--blue);
+      border-radius: 12px;
+      padding: 2rem 2.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap
+    }
+
+    .cta-strip h3 {
+      color: #fff;
+      font-size: 1.2rem;
+      max-width: 490px;
+      line-height: 1.4
+    }
+
+    .cta-strip h3 span {
+      color: var(--gold)
+    }
+
+    .btn-gl {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 13px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: .9rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background .2s, transform .2s;
+      display: inline-block
+    }
+
+    .btn-gl:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px)
+    }
+
+    /* FOOTER */
+    footer {
+      background: #060D1A;
+      border-top: 1px solid rgba(245, 168, 0, .18);
+      padding: 1.4rem 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap
+    }
+
+    footer p {
+      font-size: .78rem;
+      color: #4B5563
+    }
+
+    footer .ft {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: .82rem;
+      letter-spacing: .8px
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease
+    }
+
+    .reveal.on {
+      opacity: 1;
+      transform: none
+    }
+
+    /* PRODUCT MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(5, 10, 20, .78);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px
+    }
+
+    .modal-overlay.open {
+      display: flex
+    }
+
+    .modal-box {
+      background: #fff;
+      border-radius: 20px;
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, .5);
+      animation: slideUp .28s ease
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 10;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .2);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #fff;
+      transition: background .2s
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, .35)
+    }
+
+    .modal-hero {
+      background: var(--blue);
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px 20px 0 0;
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-end;
+      min-height: 180px
+    }
+
+    .modal-hero-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: .2
+    }
+
+    .modal-hero-content {
+      position: relative;
+      z-index: 1;
+      flex: 1
+    }
+
+    .modal-tag {
+      background: var(--gold);
+      color: var(--navy);
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: .6rem
+    }
+
+    .modal-hero h2 {
+      color: #fff;
+      font-size: 1.8rem;
+      line-height: 1.15
+    }
+
+    .modal-hero-icon {
+      font-size: 4rem;
+      opacity: .4;
+      flex-shrink: 0
+    }
+
+    .modal-body {
+      padding: 2rem
+    }
+
+    .modal-section {
+      margin-bottom: 1.8rem
+    }
+
+    .modal-section h4 {
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .8rem;
+      padding-bottom: .5rem;
+      border-bottom: 2px solid var(--blue-light)
+    }
+
+    .modal-section p {
+      font-size: .93rem;
+      color: var(--text2);
+      line-height: 1.8
+    }
+
+    .modal-specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .6rem
+    }
+
+    .mspec {
+      background: var(--off-white);
+      border-radius: 8px;
+      padding: .8rem 1rem;
+      border-left: 3px solid var(--blue)
+    }
+
+    .mspec .ms-key {
+      font-size: .7rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 2px
+    }
+
+    .mspec .ms-val {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--navy)
+    }
+
+    .modal-apps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px
+    }
+
+    .modal-chip {
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: .78rem;
+      font-weight: 600;
+      padding: 5px 13px;
+      border-radius: 100px
+    }
+
+    .modal-features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .8rem
+    }
+
+    .mfeat {
+      background: var(--off-white);
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      gap: .7rem;
+      align-items: flex-start
+    }
+
+    .mfeat .mf-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 1px
+    }
+
+    .mfeat h5 {
+      font-size: .83rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2px
+    }
+
+    .mfeat p {
+      font-size: .77rem;
+      color: var(--gray);
+      line-height: 1.4
+    }
+
+    .modal-enquiry-btn {
+      width: 100%;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      margin-top: .5rem
+    }
+
+    .modal-enquiry-btn:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px)
+    }
+
+    /* ENQUIRY MODAL */
+    .enq-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      background: rgba(5, 10, 20, .82);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px
+    }
+
+    .enq-overlay.open {
+      display: flex
+    }
+
+    .enq-box {
+      background: #fff;
+      border-radius: 20px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, .5);
+      animation: slideUp .28s ease;
+      overflow: hidden;
+      max-height: 95vh;
+      overflow-y: auto
+    }
+
+    .enq-header {
+      background: var(--navy);
+      padding: 1.8rem 2rem 1.4rem;
+      position: relative
+    }
+
+    .enq-header h3 {
+      color: #fff;
+      font-size: 1.3rem
+    }
+
+    .enq-header p {
+      color: #94A3B8;
+      font-size: .83rem;
+      margin-top: 4px
+    }
+
+    .enq-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .12);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #fff;
+      transition: background .2s
+    }
+
+    .enq-close:hover {
+      background: rgba(255, 255, 255, .22)
+    }
+
+    .enq-product-tag {
+      margin-top: .8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 168, 0, .18);
+      border: 1px solid rgba(245, 168, 0, .35);
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 100px;
+      letter-spacing: .5px
+    }
+
+    .enq-body {
+      padding: 1.8rem 2rem
+    }
+
+    .enq-field {
+      margin-bottom: 1.2rem
+    }
+
+    .enq-field label {
+      display: block;
+      font-size: .73rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin-bottom: .4rem
+    }
+
+    .enq-field input,
+    .enq-field textarea {
+      width: 100%;
+      border: 1.5px solid var(--gray-lt);
+      border-radius: 8px;
+      padding: 10px 13px;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--navy);
+      background: #fff;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none
+    }
+
+    .enq-field input:focus,
+    .enq-field textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(21, 101, 196, .1)
+    }
+
+    .enq-field textarea {
+      resize: vertical;
+      min-height: 90px
+    }
+
+    .enq-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem
+    }
+
+    .enq-send-btn {
+      width: 100%;
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      margin-top: .3rem
+    }
+
+    .enq-send-btn:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px)
+    }
+
+    .enq-note {
+      text-align: center;
+      font-size: .72rem;
+      color: var(--gray);
+      margin-top: .8rem
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:960px) {
+
+      .hero-inner,
+      .about-grid,
+      .dc-grid,
+      .solar-grid {
+        grid-template-columns: 1fr
+      }
+
+      .con-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .cta-strip {
+        flex-direction: column;
+        text-align: center
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .modal-specs-grid,
+      .modal-features-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:620px) {
+      .nav-links {
+        display: none
+      }
+
+      .prod-grid {
+        grid-template-columns: 1fr
+      }
+
+      .val-grid,
+      .sol-feats {
+        grid-template-columns: 1fr
+      }
+
+      .ben-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .dc-th,
+      .dc-r {
+        grid-template-columns: 36px 1fr
+      }
+
+      .dc-f {
+        display: none
+      }
+
+      .con-grid {
+        grid-template-columns: 1fr
+      }
+
+      .enq-row {
+        grid-template-columns: 1fr
+      }
+    }
+    /* IMAGE POPUP */
+
+.img-popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.8);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+.img-popup img{
+max-width:80%;
+max-height:80%;
+border-radius:10px;
+box-shadow:0 0 25px rgba(0,0,0,.5);
+}
+
+/* CLOSE BUTTON */
+
+.close-popup{
+position:absolute;
+top:30px;
+right:40px;
+font-size:28px;
+color:#fff;
+cursor:pointer;
+}
+
+/* CONTACT POPUP */
+
+.contact-popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.8);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+.popup-box{
+background:#fff;
+padding:40px;
+border-radius:10px;
+width:400px;
+max-width:90%;
+text-align:center;
+}
+
+.popup-box input,
+.popup-box textarea{
+width:100%;
+margin:10px 0;
+padding:10px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+.popup-box button{
+background:#0b6cff;
+color:#fff;
+border:none;
+padding:12px 20px;
+border-radius:6px;
+cursor:pointer;
+}
+  </style>
+  <script>
+
+function openImg(src){
+document.getElementById("imgPopup").style.display="flex";
+document.getElementById("popupImg").src=src;
+}
+
+function closeImg(){
+document.getElementById("imgPopup").style.display="none";
+}
+
+
+
+function closeContact(){
+document.getElementById("contactPopup").style.display="none";
+}
+function openEnquiry(product){
+
+const modal = document.getElementById("enqModal")
+modal.style.display="flex"
+
+if(product){
+document.getElementById("enqProductTag").style.display="flex"
+document.getElementById("enqProductName").innerText=product
+document.getElementById("enqProduct").value=product
+}
+
+}
+
+function closeEnquiry(){
+document.getElementById("enqModal").style.display="none"
+}
+
+function closeEnqOverlay(event){
+if(event.target.id==="enqModal"){
+closeEnquiry()
+}
+}
+
+function sendEnquiry(){
+
+let name=document.getElementById("enqName").value
+let phone=document.getElementById("enqPhone").value
+let email=document.getElementById("enqEmail").value
+let product=document.getElementById("enqProduct").value
+let msg=document.getElementById("enqMessage").value
+
+if(!name || !phone || !email){
+alert("Please fill required fields")
+return
+}
+
+fetch("https://formsubmit.co/ajax/jaygharate7@gmail.com",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json",
+"Accept":"application/json"
+},
+
+body:JSON.stringify({
+
+name:name,
+phone:phone,
+email:email,
+product:product,
+message:msg
+
+})
+
+})
+
+.then(response=>response.json())
+
+.then(data=>{
+alert("Enquiry sent successfully!")
+closeEnquiry()
+})
+
+.catch(error=>{
+alert("Something went wrong. Please try again.")
+})
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav id="nav">
+
+    <div class="logo">
+      <div class="logo-box">VT</div>
+      <div>
+        <div class="logo-name">VIREN TECHNOLOGY</div>
+        <div class="logo-tag">Switch On To Safer Solutions</div>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#dc">DC Charger</a></li>
+      <li><a href="#solar">Solar</a></li>
+      <li><a href="#" class="nav-cta" onclick="openEnquiry()">Contact Us</a></li>
+    </ul>
+
+  </nav>
+
+  <div class="gold-bar"></div>
+
+  <!-- HERO -->
+
+  <section id="hero">
+
+    <div class="hero-inner">
+
+      <div>
+
+        <div class="hero-badge">Power Solutions</div>
+
+        <h1 class="hero-h1">
+          Industrial <span class="sky">Electrical</span> <span class="gld">Solutions</span>
+        </h1>
+
+        <p class="hero-p">
+          Viren Technology provides reliable electrical control panels,
+          battery chargers and solar power solutions for industrial
+          and commercial applications.
+        </p>
+
+        <a href="#products" class="btn-g">Explore Products</a>
+        <a href="https://wa.me/919823559585" class="btn-w">WhatsApp</a>
+
+        <div class="hero-stats">
+
+          <div class="hst">
+            <div class="hst-n">10+</div>
+            <div class="hst-l">Products</div>
+          </div>
+
+          <div class="hst">
+            <div class="hst-n">5+</div>
+            <div class="hst-l">Years</div>
+          </div>
+
+          <div class="hst">
+            <div class="hst-n">100+</div>
+            <div class="hst-l">Clients</div>
+          </div>
+
+          <div class="hst">
+            <div class="hst-n">24/7</div>
+            <div class="hst-l">Support</div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="hero-img-frame">
+        <img src="images/hero-panel.jpg">
+        <div class="hero-img-badge">Industrial Panel</div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about" class="sec">
+
+    <div class="sec-inner">
+
+      <div class="lbl">Company</div>
+      <h2 class="t">About <span>Viren</span> Technology</h2>
+
+      <div class="about-grid">
+
+        <div class="about-txt">
+
+          <p>
+            We manufacture high-quality electrical control panels,
+            battery chargers and solar energy systems designed
+            for industrial reliability and efficiency.
+          </p>
+
+          <div class="val-grid">
+
+            <div class="val">
+              <div class="vi">⚡</div>
+              <h4>Quality</h4>
+              <p>Industrial grade components</p>
+            </div>
+
+            <div class="val">
+              <div class="vi">🔧</div>
+              <h4>Customization</h4>
+              <p>Tailored solutions</p>
+            </div>
+
+            <div class="val">
+              <div class="vi">🌍</div>
+              <h4>Reliability</h4>
+              <p>Tested for durability</p>
+            </div>
+
+            <div class="val">
+              <div class="vi">📈</div>
+              <h4>Performance</h4>
+              <p>Optimized efficiency</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="workers-photo">
+          <img src="images/factory.jpg">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PRODUCTS -->
+
+  <section id="products" class="sec">
+
+    <div class="sec-inner">
+
+      <div class="prod-hd">
+
+        <div class="lbl lbl-c">Products</div>
+        <h2 class="t">Our Complete <span>Product Range</span></h2>
+        <p class="sub sub-c">Click any product to view specifications</p>
+
+      </div>
+
+      <div class="prod-grid">
+
+        <!-- LVDB -->
+
+        <div class="pc">
+
+          <div class="pc-img">
+            <img src="images/lvdb.jpg" onclick="openImg(this.src)">
+          </div>
+
+          <div class="pc-top">
+            <div class="pc-icon">⚡</div>
+            <div>
+              <h3>Low Voltage Distribution Board</h3>
+              <div class="pc-short">LVDB</div>
+            </div>
+          </div>
+
+          <div class="pc-body">
+
+            <p class="pc-desc">
+              Distributes electrical power safely within buildings
+              and industrial facilities.
+            </p>
+
+            <div class="specs">
+
+              <div class="sr">
+                <div class="sk">Voltage</div>
+                <div class="sv">415V</div>
+              </div>
+
+              <div class="sr">
+                <div class="sk">Protection</div>
+                <div class="sv">MCB / MCCB</div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- DC CHARGER -->
+
+        <div class="pc">
+
+          <div class="pc-img">
+            <img src="images/battery-charger.jpg">
+          </div>
+
+          <div class="pc-top">
+            <div class="pc-icon">🔋</div>
+            <div>
+              <h3>DC Battery Charger</h3>
+              <div class="pc-short">DC CHARGER</div>
+            </div>
+          </div>
+
+          <div class="pc-body">
+
+            <p class="pc-desc">
+              Microprocessor based charger with monitoring and protection.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- APFC -->
+
+        <div class="pc">
+
+          <div class="pc-img">
+            <img src="images/apfc.jpg">
+          </div>
+
+          <div class="pc-top">
+            <div class="pc-icon">📊</div>
+            <div>
+              <h3>APFC Panel</h3>
+              <div class="pc-short">Power Factor Control</div>
+            </div>
+          </div>
+
+          <div class="pc-body">
+            <p class="pc-desc">
+              Improves power factor and reduces energy losses.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="pc">
+
+<div class="pc-img">
+<img src="images/amf.jpg">
+</div>
+
+<div class="pc-top">
+<div class="pc-icon">⚙️</div>
+<div>
+<h3>Automatic Mains Failure Panel</h3>
+<div class="pc-short">AMF PANEL</div>
+</div>
+</div>
+
+<div class="pc-body">
+<p class="pc-desc">
+Automatically switches power supply between mains and generator during power failure.
+</p>
+</div>
+
+</div>
+<div class="pc">
+
+<div class="pc-img">
+<img src="images/ev-charger.jpg">
+</div>
+
+<div class="pc-top">
+<div class="pc-icon">🔌</div>
+<div>
+<h3>EV Charger</h3>
+<div class="pc-short">Electric Vehicle Charger</div>
+</div>
+</div>
+
+<div class="pc-body">
+<p class="pc-desc">
+Reliable EV charging solutions for industrial and commercial installations.
+</p>
+</div>
+
+</div>
+<div class="pc">
+
+<div class="pc-img">
+<img src="images/servo.png">
+</div>
+
+<div class="pc-top">
+<div class="pc-icon">🔋</div>
+<div>
+<h3>Servo Voltage Stabilizer</h3>
+<div class="pc-short">SERVO</div>
+</div>
+</div>
+
+<div class="pc-body">
+<p class="pc-desc">
+Maintains constant output voltage to protect electrical equipment.
+</p>
+</div>
+
+</div>
+<div class="pc">
+
+<div class="pc-img">
+<img src="images/mcc.jpg">
+</div>
+
+<div class="pc-top">
+<div class="pc-icon">⚡</div>
+<div>
+<h3>Motor Control Center</h3>
+<div class="pc-short">MCC PANEL</div>
+</div>
+</div>
+
+<div class="pc-body">
+<p class="pc-desc">
+Centralized motor control panels used in industrial automation.
+</p>
+</div>
+
+</div>
+<div class="pc">
+
+<div class="pc-img">
+<img src="images/pcc.jpg">
+</div>
+
+<div class="pc-top">
+<div class="pc-icon">⚡</div>
+<div>
+<h3>Power Control Center</h3>
+<div class="pc-short">PCC PANEL</div>
+</div>
+</div>
+
+<div class="pc-body">
+<p class="pc-desc">
+Used for controlling and distributing power to multiple circuits.
+</p>
+</div>
+
+</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SOLAR -->
+<section id="dc" class="sec ">
+  <div class="sec-inner">
+
+    <div class="lbl">Why Choose Us</div>
+    <h2 class="t">The Smarter <span>DC Battery Charger</span></h2>
+    <p class="sub">11 parameters monitored simultaneously — accessible from anywhere in the world.</p>
+
+    <div class="dc-grid">
+
+      <div>
+
+        <div class="dc-txt">
+          <p>
+            Our DC Battery Charger goes far beyond the standard version. 
+            Up to <strong>11 parameters are monitored simultaneously</strong> and fed to a web browser 
+            accessible from anywhere — password secured.
+          </p>
+
+          <p>
+            Know the exact status of your battery system whether on-site or anywhere globally.
+          </p>
+        </div>
+
+        <div class="dc-img-wrap">
+
+          <img src="images/dc-battery-charger.jpg" alt="DC Battery Charger Panel">
+
+          <div class="dc-box">
+            <span class="ic">&#127760;</span>
+            <p>
+              <strong>Remote Web Monitoring:</strong>  
+              All 11 live parameters on any browser, anywhere.  
+              No extra hardware. Fully password secured.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="dc-tbl">
+
+        <div class="dc-th">
+          <span>#</span>
+          <span>Feature</span>
+          <span>Description</span>
+        </div>
+
+        <div class="dc-r">
+          <span class="dc-n">01</span>
+          <span class="dc-f">Temperature 1</span>
+          <span class="dc-d">Temperature inside electrical cabinet</span>
+        </div>
+
+        <div class="dc-r">
+          <span class="dc-n">02</span>
+          <span class="dc-f">Temperature 2</span>
+          <span class="dc-d">Battery Box temperature</span>
+        </div>
+
+        <div class="dc-r">
+          <span class="dc-n">03</span>
+          <span class="dc-f">AC Protection 1</span>
+          <span class="dc-d">U/V, O/V, Freq., U/C, O/C, V/A, PF, Reactive Power, Phase Seq — Warning</span>
+        </div>
+
+        <div class="dc-r">
+          <span class="dc-n">04</span>
+          <span class="dc-f">AC Protection 2</span>
+          <span class="dc-d">Same AC parameters — Alarm (Severe)</span>
+        </div>
+
+        <div class="dc-r">
+          <span class="dc-n">05</span>
+          <span class="dc-f">Earth Fault 1</span>
+          <span class="dc-d">Earth Fault Leakage Prewarning (mild)</span>
+        </div>
+
+        <div class="dc-r">
+          <span class="dc-n">06</span>
+          <span class="dc-f">Earth Fault 2</span>
+          <span class="dc-d">Earth Fault Leakage Alarm (Severe)</span>
+        </div>
+
+        <div class="dc-r">
+          <span class="dc-n">07</span>
+          <span class="dc-f">System ON/OFF</span>
+          <span class="dc-d">Current Status — Detects Trips</span>
+        </div>
+
+        <div class="dc-r">
+          <span class="dc-n">08</span>
+          <span class="dc-f">Phase Loss</span>
+          <span class="dc-d">Detects loss of any phase</span>
+        </div>
+
+        <div class="dc-r">
+          <span class="dc-n">09</span>
+          <span class="dc-f">Smoke</span>
+          <span class="dc-d">Detects battery smoke (Very Sensitive)</span>
+        </div>
+
+        <div class="dc-r">
+          <span class="dc-n">10</span>
+          <span class="dc-f">Breaker Status</span>
+          <span class="dc-d">Backup detection of Breaker Fault</span>
+        </div>
+
+        <div class="dc-r">
+          <span class="dc-n">11</span>
+          <span class="dc-f">DC Bus ON/OFF</span>
+          <span class="dc-d">DC Bus Status — Detects SMPS MCB Fault</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+ <section id="solar" class="sec ">
+
+  <div class="sec-inner">
+
+    <div class="lbl">Clean Energy</div>
+    <h2 class="t">Rooftop <span>Solar Solutions</span></h2>
+    <p class="sub">Turn your rooftop into a clean energy source — residential and commercial.</p>
+
+    <div class="solar-grid">
+
+      <div class="sol-txt">
+
+        <p>
+          Using cutting-edge technology and expert installation, we help you harness solar power 
+          cost-effectively. From free site assessment to flexible payment plans — 
+          we make the transition seamless.
+        </p>
+
+        <div class="sol-feats">
+
+          <div class="sf">
+            <div class="sfi">&#127968;</div>
+            <h4>Free Home Assessment</h4>
+            <p>Expert free site visit to recommend the right solution</p>
+          </div>
+
+          <div class="sf">
+            <div class="sfi">&#127780;&#65039;</div>
+            <h4>Residential Solutions</h4>
+            <p>On-grid, off-grid, and hybrid systems for your home</p>
+          </div>
+
+          <div class="sf">
+            <div class="sfi">&#127970;</div>
+            <h4>Commercial Solutions</h4>
+            <p>Scalable for micro-utilities to large-scale industry</p>
+          </div>
+
+          <div class="sf">
+            <div class="sfi">&#128179;</div>
+            <h4>Flexible Payments</h4>
+            <p>Easy plans aligned with your financial goals</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="solar-photo-card">
+
+          <img src="images/solar-plant.jpg" alt="Solar Rooftop Installation">
+
+          <div class="ben-grid">
+
+            <div class="ben">
+              <div class="bi">&#9889;</div>
+              <p>Efficiency with Trust</p>
+            </div>
+
+            <div class="ben">
+              <div class="bi">&#127807;</div>
+              <p>Self-sufficient Energy</p>
+            </div>
+
+            <div class="ben">
+              <div class="bi">&#128267;</div>
+              <p>Uninterrupted Power</p>
+            </div>
+
+            <div class="ben">
+              <div class="bi">&#128196;</div>
+              <p>No Utility Bills</p>
+            </div>
+
+            <div class="ben">
+              <div class="bi">&#9851;&#65039;</div>
+              <p>100% Renewable</p>
+            </div>
+
+            <div class="ben">
+              <div class="bi">&#128176;</div>
+              <p>Long-term Savings</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+  <!-- CONTACT -->
+
+  <section id="contact" class="sec">
+
+    <div class="contact-inner sec-inner">
+
+      <div class="lbl lbl-c">Contact</div>
+      <h2 class="t">Get In <span>Touch</span></h2>
+
+      <div class="con-grid">
+
+        <div class="cc">
+          <div class="ci">📞</div>
+          <h4>Phone</h4>
+          <a href="tel:+919823559585">+91 9823559585</a>
+        </div>
+
+        <div class="cc">
+          <div class="ci">✉️</div>
+          <h4>Email</h4>
+          <a href="mailto:virentechnologys@gmail.com">virentechnologys@gmail.com</a>
+        </div>
+
+        <div class="cc">
+          <div class="ci">💬</div>
+          <h4>WhatsApp</h4>
+          <a href="https://wa.me/919823559585">Chat Now</a>
+        </div>
+
+      </div>
+
+      <!-- CONTACT FORM -->
+
+      
+
+    </div>
+
+  </section>
+  <div class="enq-overlay" id="enqModal" onclick="closeEnqOverlay(event)">
+  <div class="enq-box">
+
+    <div class="enq-header">
+      <button class="enq-close" onclick="closeEnquiry()">&#10005;</button>
+
+      <h3>&#128233; Send an Enquiry</h3>
+      <p>Fill in your details and we'll get back to you promptly.</p>
+
+      <div class="enq-product-tag" id="enqProductTag" style="display:none">
+        <span>&#128295;</span>
+        <span id="enqProductName"></span>
+      </div>
+
+    </div>
+
+    <div class="enq-body">
+
+      <div class="enq-row">
+
+        <div class="enq-field">
+          <label>Your Name *</label>
+          <input type="text" id="enqName" placeholder="e.g. Rahul Sharma">
+        </div>
+
+        <div class="enq-field">
+          <label>Phone / WhatsApp *</label>
+          <input type="tel" id="enqPhone" placeholder="+91 98765 43210">
+        </div>
+
+      </div>
+
+      <div class="enq-field">
+        <label>Email Address *</label>
+        <input type="email" id="enqEmail" placeholder="yourname@email.com">
+      </div>
+
+      <div class="enq-field">
+        <label>Product / Requirement</label>
+        <input type="text" id="enqProduct" placeholder="e.g. DC Battery Charger 200A, LVDB Panel...">
+      </div>
+
+      <div class="enq-field">
+        <label>Your Requirements</label>
+        <textarea id="enqMessage" placeholder="Describe your requirement, quantity, specifications, or any questions..."></textarea>
+      </div>
+
+      <button class="enq-send-btn" onclick="sendEnquiry()">
+        &#128228; Send to Viren Technology
+      </button>
+
+      <p class="enq-note">
+        This will open your email app with your message pre-filled and send to jaygharate7@gmail.com
+      </p>
+
+    </div>
+
+  </div>
+</div>
+
+  <footer>
+
+    <p>© 2026 Viren Technology</p>
+    <div class="ft">Power & Electrical Solutions</div>
+
+  </footer>
+  <div id="imgPopup" class="img-popup">
+
+<span class="close-popup" onclick="closeImg()">✕</span>
+
+<img id="popupImg">
+
+</div>
+
+</body>
+
+</html>
