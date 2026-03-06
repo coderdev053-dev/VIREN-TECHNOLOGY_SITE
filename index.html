@@ -574,7 +574,7 @@
       transform: translateY(-6px)
     }
 
-    /* .pc-img {
+    .pc-img {
       height: 200px;
       overflow: hidden;
       background: #f0f4ff;
@@ -586,10 +586,10 @@
       height: 100%;
       object-fit: cover;
       transition: transform .35s
-    } */
+    }
      /* PRODUCT IMAGE FIX */
 
-.pc-img{
+/* .pc-img{
 width:100%;
 height:220px;
 overflow:hidden;
@@ -605,7 +605,7 @@ width:100%;
 height:100%;
 object-fit:cover;
 display:block;
-}
+} */
 
     .pc:hover .pc-img img {
       transform: scale(1.06)
@@ -1512,6 +1512,12 @@ display:block;
 
     /* RESPONSIVE */
     @media(max-width:960px) {
+      .temp-c{
+        display: none;
+      }
+      .hero-img-frame{
+        margin-top:20px;
+      }
 
       .hero-inner,
       .about-grid,
@@ -1734,6 +1740,92 @@ alert("Something went wrong. Please try again.")
 })
 
 }
+function closeProduct() {
+  document.getElementById('productModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeProductOverlay(e) {
+  if (e.target === document.getElementById('productModal')) closeProduct();
+}
+var PRODUCTS = {"lvdb": {"name": "Low Voltage Distribution Board", "short": "LVDB", "icon": "⚡", "imgKey": "lvdb", "desc": "The Low Voltage Distribution Board (LVDB) is a critical component in any electrical installation. It distributes electrical power to multiple circuits while providing overcurrent and short-circuit protection. Our LVDBs are custom-built to suit the exact load profile, site conditions, and safety standards — whether residential, commercial, or heavy industrial.", "specs": [["Rated Voltage", "415V, 3-Phase, 4-Wire"], ["Frequency", "50 Hz"], ["Incoming Protection", "MCCB / Air Circuit Breaker"], ["Outgoing Protection", "MCB / MCCB / RCCB"], ["Enclosure Rating", "IP40, IP55 or higher"], ["Bus Bar Material", "Electrolytic Copper"], ["Standards", "IEC 61439, IS 8623 compliant"], ["Finish", "Powder-coated, RAL 7032 standard"]], "features": [["🛡️", "Safety Rated", "Multiple protection layers — overload, short circuit, and earth fault"], ["🔧", "Fully Custom", "Built to your exact load schedule, cable layout, and enclosure requirements"], ["📊", "Metering", "Optional energy meters, voltmeters, ammeters on request"], ["🏭", "Industrial Grade", "Heavy-duty busbars and components rated for harsh environments"]], "apps": ["Residential Complexes", "Commercial Buildings", "Industrial Plants", "Data Centres", "HVAC Systems", "Hospitals", "Hotels and Malls", "Infrastructure Projects"]}, "battery": {"name": "DC Battery Charger", "short": "Fully Customizable · Up to 800A", "icon": "🔋", "imgKey": "battery", "desc": "Viren Technology DC Battery Charger is a microprocessor-based, fully programmable solution engineered to charge a wide range of battery technologies safely and efficiently. What sets our charger apart is its advanced 11-parameter remote web monitoring system — all parameters visible on a password-secured browser accessible from anywhere in the world. Available in a wide range of voltages and currents, fully customizable.", "specs": [["Input Voltage", "230V (1-Ph) / 415V (3-Ph)"], ["Output Voltage", "12V – 220V (fully customizable)"], ["Max Charging Current", "Up to 800A"], ["Battery Types", "Lead-Acid, VRLA, Li-Ion (on request)"], ["Charging Modes", "Constant Current / Constant Voltage"], ["Remote Monitoring", "11-parameter web browser access"], ["Protection", "Overcharge, Overcurrent, Reverse Polarity, Short Circuit"], ["Display", "Digital LCD with parameter readout"]], "features": [["🌐", "Remote Monitoring", "Access 11 live parameters — temperature, earth fault, smoke, AC/DC status — from any browser"], ["🔒", "Secure Access", "Password-protected web interface — no extra software required"], ["⚙️", "Customizable", "Voltage, current, charging profile all tailored to your battery bank"], ["🛡️", "11-Layer Protection", "Comprehensive fault detection including smoke, phase loss, earth leakage"]], "apps": ["UPS Systems", "Telecom Backup", "Renewable Energy Storage", "Substation Battery Banks", "Industrial Backup Systems", "Generator Starting Batteries"]}, "apfc": {"name": "Automatic Power Factor Correction Panel", "short": "APFC Panel", "icon": "📊", "imgKey": "apfc", "desc": "The APFC Panel continuously monitors the power factor of your electrical system and automatically switches capacitor banks in or out to maintain the power factor at or above the target value. This reduces reactive power demand, lowers electricity bills, avoids utility penalties, and improves overall system efficiency. Our panels use microprocessor-based PF relays for fast and accurate switching.", "specs": [["Rated Voltage", "415V, 3-Phase"], ["Frequency", "50 Hz"], ["PF Improvement", "0.85 (lag) to 0.99 (target)"], ["Capacitor Switching", "Automatic via PF relay (6-12 steps)"], ["Capacitor Type", "MPP (Metallized Polypropylene)"], ["Protection", "Overvoltage, Undervoltage, Overload"], ["Harmonic Filter", "Available with detuned reactors"], ["Standards", "IEC 60831, IS 13340"]], "features": [["💰", "Bill Reduction", "Improved PF lowers kVAh billing and avoids utility penalty charges"], ["⚡", "Auto Switching", "Fast capacitor bank switching maintains PF automatically 24/7"], ["📉", "Loss Reduction", "Reduces losses in cables, transformers, and distribution equipment"], ["🔧", "Harmonic Ready", "Optional detuned reactors available to protect capacitors from harmonics"]], "apps": ["Industrial Manufacturing Plants", "Commercial Office Buildings", "Shopping Malls and Hotels", "Power Transmission Networks", "Pumping Stations", "Welding and Heavy Load Industries"]}, "amf": {"name": "Automatic Mains Failure Panel", "short": "AMF Panel", "icon": "🔄", "imgKey": "amf", "desc": "The AMF Panel monitors the mains supply continuously. On detecting a mains failure (undervoltage, overvoltage, phase loss, or frequency deviation), it automatically starts the standby generator, waits for it to stabilize, then transfers the load — all within 10 seconds. On mains restoration, it retransfers and shuts down the generator after a cooldown period.", "specs": [["Rated Voltage", "415V, 3-Phase"], ["Frequency", "50 Hz"], ["Transfer Time", "Less than 10 seconds"], ["Control", "Microprocessor-based AMF relay"], ["Fault Detection", "Under/Overvoltage, Phase Fail, Low Frequency"], ["Generator Control", "Auto start/stop with configurable delay"], ["Manual Override", "Available for testing and maintenance"], ["Protection", "Engine fault interlocks, overcurrent protection"]], "features": [["⚡", "Fast Transfer", "Load transferred to generator in under 10 seconds automatically"], ["🔄", "Auto Return", "Automatically retransfers to mains and shuts generator on supply restoration"], ["🛡️", "Multi-Fault Detection", "Monitors all 3 phases for voltage, frequency, and phase sequence"], ["📱", "Remote Alarm", "Optional GSM/SMS alert on mains failure and generator fault"]], "apps": ["Hospitals and Clinics", "Data Centres", "Banks and Offices", "Manufacturing Plants", "Telecom Towers", "Residential High-Rise Buildings", "Hotels and Hospitality"]}, "ev": {"name": "Electric Vehicle Chargers", "short": "AC and DC · 7.4 kW to 240 kW", "icon": "🚗", "imgKey": "ev", "desc": "Viren Technology offers a complete range of EV charging solutions for homes, commercial premises, and public charging stations. From 7.4 kW AC wall boxes to 240 kW DC fast chargers, all units support major EV models via standard connectors. Smart app connectivity, OCPP compliance, and user-friendly displays make our chargers future-ready.", "specs": [["AC Charger Power", "7.4 kW, 11 kW, 22 kW"], ["DC Fast Charger Power", "30 kW, 60 kW, 120 kW, 240 kW"], ["Input Voltage", "220V (AC) / 440V (DC units)"], ["Connectors", "Type 2, CCS2, CHAdeMO"], ["Communication", "Wi-Fi, Bluetooth, OCPP 1.6/2.0"], ["Protection", "IP54 weatherproof enclosure"], ["Payment", "RFID card, App, QR code (commercial)"], ["Certification", "CE, BIS compliant"]], "features": [["📱", "Smart App Control", "Monitor charging status, schedule sessions, and view history via mobile app"], ["⚡", "Fast DC Charging", "240 kW DC charger provides 100 km range in under 10 minutes for compatible EVs"], ["🌐", "OCPP Compliant", "Integrates with fleet management and charging network software"], ["🛡️", "Safety Certified", "Overcurrent, overvoltage, short-circuit, and ground fault protection"]], "apps": ["Public EV Charging Stations", "Corporate Parking Lots", "Residential Complexes", "Shopping Malls", "Hotels and Hospitality", "Fleet Depots and Logistics", "Highways and Service Stations"]}, "servo": {"name": "Servo Stabilizer", "short": "Voltage Regulation · 1–500 kVA", "icon": "🎛️", "imgKey": "servo", "desc": "Servo Voltage Stabilizers protect sensitive and expensive equipment from the damaging effects of voltage fluctuations. Using a servo motor-driven variable transformer (variac), the output voltage is corrected continuously and smoothly. Unlike relay-type stabilizers, servo units provide stepless voltage correction with very high accuracy (plus or minus 1%), making them ideal for medical, IT, and precision industrial equipment.", "specs": [["Input Voltage Range", "180V – 450V (3-Phase)"], ["Output Voltage", "415V plus/minus 1%"], ["Power Rating", "1 kVA to 500 kVA"], ["Correction Speed", "8–12V per second"], ["Efficiency", "98% to 99%"], ["Waveform Distortion", "Nil (pure sine output)"], ["Protection", "Overvoltage cutoff, Under-voltage alarm, Bypass switch"], ["Cooling", "Air-cooled (Oil-cooled for large ratings)"]], "features": [["🎯", "High Accuracy", "Output maintained at plus/minus 1% regardless of input variation"], ["⚡", "Fast Response", "Corrects voltage within milliseconds — no impact on sensitive loads"], ["🔧", "Bypass Switch", "Manual bypass available for maintenance without disconnecting load"], ["📊", "Digital Display", "Input voltage, output voltage, and load current on front panel"]], "apps": ["IT and Server Rooms", "Medical Equipment (MRI, CT Scan)", "CNC Machines and Precision Tools", "Offset Printing Machines", "Textile Machinery", "Plastic Injection Moulding", "Research Laboratories"]}, "mcc": {"name": "Motor Control Centre", "short": "MCC", "icon": "🏭", "imgKey": "mcc", "desc": "A Motor Control Centre (MCC) is a centralised assembly of one or more motor starters along with associated power, control, and monitoring devices — all housed in a common enclosure. Viren Technology designs and builds MCCs for a wide range of industrial applications, incorporating DOL, Star-Delta, Soft Starter, and VFD-based motor starters with comprehensive motor protection relays.", "specs": [["Rated Voltage", "415V, 3-Phase, 50 Hz"], ["Busbar Rating", "Up to 4000A"], ["Starter Types", "DOL, Star-Delta, Soft Starter, VFD"], ["Protection", "Motor Protection Relay — Overload, Phase Fail, Thermistor"], ["Enclosure", "IP54 / IP55 standard (IP65 on request)"], ["Control Voltage", "24V DC / 110V AC / 230V AC"], ["Communication", "Profibus, Modbus, DeviceNet (optional)"], ["Standards", "IEC 61439-2, IS 8623"]], "features": [["🔧", "Modular Design", "Each feeder independently removable for maintenance without system shutdown"], ["📡", "SCADA Ready", "Optional PLC/SCADA integration for remote monitoring and control"], ["🛡️", "Motor Protection", "Digital MPRs protect each motor against overload, phase loss, and locked rotor"], ["🏭", "Heavy Duty", "Designed for continuous operation in harsh industrial environments"]], "apps": ["Water and Sewage Treatment Plants", "Chemical and Process Industries", "Manufacturing and Assembly Lines", "HVAC and Air Handling Units", "Mining and Minerals", "Power Plants", "Food and Beverage Processing"]}, "pcc": {"name": "Power Control Centre", "short": "PCC", "icon": "🔌", "imgKey": "pcc", "desc": "The Power Control Centre (PCC) acts as the main incoming and distribution switchboard for large industrial and infrastructure facilities. It receives high-current supply from the transformer or grid, provides bus-coupler arrangements, and distributes power to MCCs, LVDBs, and other sub-distribution boards. Designed to withstand high fault levels and fully tested per IEC standards.", "specs": [["Rated Voltage", "415V to 33 kV"], ["Frequency", "50 Hz"], ["Incoming Rating", "Up to 6300A"], ["Short Circuit Withstand", "Up to 50 kA for 1 second"], ["Switching Devices", "ACB, VCB, SF6 breakers"], ["Busbar Material", "Electrolytic Copper / Aluminium"], ["Control", "PLC-based, Manual / Semi-Auto / Auto"], ["Enclosure", "IP55 or higher, RAL 7032 finish"]], "features": [["⚡", "High Fault Rating", "Busbars and breakers rated for up to 50 kA fault withstand"], ["🔄", "Bus Coupler", "Inbuilt bus-sectionaliser for dual-feeder and auto-changeover arrangements"], ["📊", "Metering Suite", "Multifunction energy meters, power analysers, and power quality monitoring"], ["🛡️", "Type Tested", "Fully type-tested panels per IEC 61439-1 and 2 for guaranteed performance"]], "apps": ["Large Manufacturing Facilities", "Steel and Cement Plants", "Airports and Metro Projects", "Power Generation Plants", "Utility Substations", "Data Centre Infrastructure", "Oil and Gas Terminals"]}};
+var IMGS = {
+
+lvdb:"images/lvdb.jpg",
+battery:"images/battery.jpg",
+apfc:"images/apfc.jpg",
+amf:"images/amf.jpg",
+ev:"images/evcharger.jpg",
+servo:"images/servo.png",
+mcc:"images/mcc.jpg",
+pcc:"images/pcc.jpg"
+
+};
+
+/* ── Open product modal ── */
+function openProduct(id) {
+  var p = PRODUCTS[id];
+  if (!p) return;
+
+  document.getElementById('mTag').textContent = p.short;
+  document.getElementById('mTitle').textContent = p.name;
+  document.getElementById('mIcon').textContent = p.icon;
+  document.getElementById('mHeroImg').style.backgroundImage = 'url(' + IMGS[p.imgKey] + ')';
+  document.getElementById('mDesc').textContent = p.desc;
+
+  var sp = document.getElementById('mSpecs');
+  sp.innerHTML = '';
+  p.specs.forEach(function(s) {
+    var d = document.createElement('div');
+    d.className = 'mspec';
+    d.innerHTML = '<div class="ms-key">' + s[0] + '</div><div class="ms-val">' + s[1] + '</div>';
+    sp.appendChild(d);
+  });
+
+  var ft = document.getElementById('mFeats');
+  ft.innerHTML = '';
+  if (p.features && p.features.length) {
+    p.features.forEach(function(f) {
+      var d = document.createElement('div');
+      d.className = 'mfeat';
+      d.innerHTML = '<div class="mf-icon">' + f[0] + '</div><div><h5>' + f[1] + '</h5><p>' + f[2] + '</p></div>';
+      ft.appendChild(d);
+    });
+    document.getElementById('mFeatSec').style.display = '';
+  } else {
+    document.getElementById('mFeatSec').style.display = 'none';
+  }
+
+  var ap = document.getElementById('mApps');
+  ap.innerHTML = '';
+  p.apps.forEach(function(a) {
+    var s = document.createElement('span');
+    s.className = 'modal-chip';
+    s.textContent = a;
+    ap.appendChild(s);
+  });
+
+  document.getElementById('mEnqBtn').onclick = function() {
+    closeProduct();
+    openEnquiry(p.name);
+  };
+
+  document.getElementById('productModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProduct() {
+  document.getElementById('productModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeProductOverlay(e) {
+  if (e.target === document.getElementById('productModal')) closeProduct();
+}
+function navTo(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 66, behavior: 'smooth' });
+}
+
 
 </script>
 
@@ -1745,13 +1837,10 @@ alert("Something went wrong. Please try again.")
 
   <nav id="nav">
 
-    <div class="logo">
-      <div class="logo-box">VT</div>
-      <div>
-        <div class="logo-name">VIREN TECHNOLOGY</div>
-        <div class="logo-tag">Switch On To Safer Solutions</div>
-      </div>
-    </div>
+    <div class="logo" onclick="navTo('hero')">
+    <div class="logo-box">VT</div>
+    <div><div class="logo-name">VIREN TECHNOLOGY</div><div class="logo-tag">Switch on to Safer Solutions</div></div>
+  </div>
 
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -1775,9 +1864,8 @@ alert("Something went wrong. Please try again.")
 
         <div class="hero-badge">Power Solutions</div>
 
-        <h1 class="hero-h1">
-          Industrial <span class="sky">Electrical</span> <span class="gld">Solutions</span>
-        </h1>
+              <h1 class="hero-h1">Advanced <span class="gld">Electrical</span><br>Solutions,<br>Rooted in <span class="sky">Safety</span></h1>
+
 
         <p class="hero-p">
           Viren Technology provides reliable electrical control panels,
@@ -1786,9 +1874,40 @@ alert("Something went wrong. Please try again.")
         </p>
 
         <a href="#products" class="btn-g">Explore Products</a>
-        <a href="https://wa.me/919823559585" class="btn-w">WhatsApp</a>
+        <a href="https://wa.me/919823559585" class="btn-w">Get in touch</a>
 
-        <div class="hero-stats">
+        <!-- <div class="hero-stats">
+
+          <div class="hst">
+            <div class="hst-n">10+</div>
+            <div class="hst-l">Products</div>
+          </div>
+
+          <div class="hst">
+            <div class="hst-n">5+</div>
+            <div class="hst-l">Years</div>
+          </div>
+
+          <div class="hst">
+            <div class="hst-n">100+</div>
+            <div class="hst-l">Clients</div>
+          </div>
+
+          <div class="hst">
+            <div class="hst-n">24/7</div>
+            <div class="hst-l">Support</div>
+          </div>
+
+        </div> -->
+
+      </div>
+
+      <div class="hero-img-frame">
+        <img src="images/hero-panel.jpg">
+        <!-- <div class="hero-img-badge">Industrial Panel</div> -->
+      </div>
+      <div class="temp-c"></div>
+       <div class="hero-stats">
 
           <div class="hst">
             <div class="hst-n">10+</div>
@@ -1812,13 +1931,6 @@ alert("Something went wrong. Please try again.")
 
         </div>
 
-      </div>
-
-      <div class="hero-img-frame">
-        <img src="images/hero-panel.jpg">
-        <div class="hero-img-badge">Industrial Panel</div>
-      </div>
-
     </div>
 
   </section>
@@ -1829,18 +1941,23 @@ alert("Something went wrong. Please try again.")
 
     <div class="sec-inner">
 
-      <div class="lbl">Company</div>
+      <div class="lbl">Our Story</div>
       <h2 class="t">About <span>Viren</span> Technology</h2>
 
       <div class="about-grid">
 
         <div class="about-txt">
+    <p class="sub">An upcoming MSME with advanced research facilities and factory in Nashik, India.</p>
 
-          <p>
+          <p>Viren Technology is an enterprise with advanced research facilities and its own factory in Nashik, India. We genuinely believe in <strong>"Safety-First"</strong> — a key factor overlooked by many competitors.</p>
+        <p>We firmly believe quality cannot be compromised for price, and especially not for safety. Every product is designed and developed with our customers' best interests at heart.</p>
+        
+
+          <!-- <p>
             We manufacture high-quality electrical control panels,
             battery chargers and solar energy systems designed
             for industrial reliability and efficiency.
-          </p>
+          </p> -->
 
           <div class="val-grid">
 
@@ -1853,13 +1970,13 @@ alert("Something went wrong. Please try again.")
             <div class="val">
               <div class="vi">🔧</div>
               <h4>Customization</h4>
-              <p>Tailored solutions</p>
+              <p>Products tailored precisely to your requirements</p>
             </div>
 
             <div class="val">
-              <div class="vi">🌍</div>
-              <h4>Reliability</h4>
-              <p>Tested for durability</p>
+              <div class="vi">🛡️</div>
+              <h4>Safety First</h4>
+              <p>Safety is the absolute top priority in every product</p>
             </div>
 
             <div class="val">
@@ -1888,7 +2005,7 @@ alert("Something went wrong. Please try again.")
 
     <div class="sec-inner">
 
-      <div class="prod-hd">
+      <div class="prod-hd  ">
 
         <div class="lbl lbl-c">Products</div>
         <h2 class="t">Our Complete <span>Product Range</span></h2>
@@ -1900,10 +2017,11 @@ alert("Something went wrong. Please try again.")
 
         <!-- LVDB -->
 
-        <div class="pc">
+        <div class="pc " onclick="openProduct('lvdb')">
 
           <div class="pc-img">
-            <img src="images/lvdb.jpg" onclick="openImg(this.src)">
+            <img src="images/lvdb.jpg" >
+            <div class="pc-hint">Click to explore &#8594;</div>
           </div>
 
           <div class="pc-top">
@@ -1914,37 +2032,21 @@ alert("Something went wrong. Please try again.")
             </div>
           </div>
 
-          <div class="pc-body">
-
-            <p class="pc-desc">
-              Distributes electrical power safely within buildings
-              and industrial facilities.
-            </p>
-
-            <div class="specs">
-
-              <div class="sr">
-                <div class="sk">Voltage</div>
-                <div class="sv">415V</div>
-              </div>
-
-              <div class="sr">
-                <div class="sk">Protection</div>
-                <div class="sv">MCB / MCCB</div>
-              </div>
-
-            </div>
-
-          </div>
+            <div class="pc-body">
+          <p class="pc-desc">Distributes electrical power within buildings or industrial premises. Protects circuits and controls electricity flow for maximum safety.</p>
+          <div class="specs"><div class="sr"><span class="sk">Voltage</span><span class="sv">415V</span></div><div class="sr"><span class="sk">Protection</span><span class="sv">MCB / MCCB</span></div><div class="sr"><span class="sk">Standards</span><span class="sv">IEC, IS compliant</span></div></div>
+          <div class="chips"><span class="chip">Residential</span><span class="chip">Commercial</span><span class="chip">Industrial</span></div>
+        </div>
 
         </div>
 
         <!-- DC CHARGER -->
 
-        <div class="pc">
+        <div class="pc" onclick="openProduct('battery')">
 
           <div class="pc-img">
             <img src="images/battery-charger.jpg">
+            <div class="pc-hint">Click to explore &#8594;</div>
           </div>
 
           <div class="pc-top">
@@ -1956,21 +2058,20 @@ alert("Something went wrong. Please try again.")
           </div>
 
           <div class="pc-body">
-
-            <p class="pc-desc">
-              Microprocessor based charger with monitoring and protection.
-            </p>
-
-          </div>
+          <p class="pc-desc">Microprocessor-based charger with 11-parameter remote web monitoring. Peak performance and longevity with comprehensive protection.</p>
+          <div class="specs"><div class="sr"><span class="sk">Charging Current</span><span class="sv">Up to 800A</span></div><div class="sr"><span class="sk">Output Voltage</span><span class="sv">12V &#8211; 220V</span></div><div class="sr"><span class="sk">Monitoring</span><span class="sv">11 Remote Parameters</span></div></div>
+          <div class="chips"><span class="chip">UPS Systems</span><span class="chip">Telecom</span><span class="chip">Storage</span></div>
+        </div>
 
         </div>
 
         <!-- APFC -->
 
-        <div class="pc">
+        <div class="pc"onclick="openProduct('apfc')">
 
           <div class="pc-img">
             <img src="images/apfc.jpg">
+            <div class="pc-hint">Click to explore &#8594;</div>
           </div>
 
           <div class="pc-top">
@@ -1981,18 +2082,19 @@ alert("Something went wrong. Please try again.")
             </div>
           </div>
 
-          <div class="pc-body">
-            <p class="pc-desc">
-              Improves power factor and reduces energy losses.
-            </p>
-          </div>
+           <div class="pc-body">
+          <p class="pc-desc">Improves power factor, reducing energy losses through automatic capacitor bank switching and real-time monitoring.</p>
+          <div class="specs"><div class="sr"><span class="sk">Voltage</span><span class="sv">415V</span></div><div class="sr"><span class="sk">PF Improvement</span><span class="sv">0.85 to 0.99</span></div><div class="sr"><span class="sk">Control</span><span class="sv">Microprocessor-based</span></div></div>
+          <div class="chips"><span class="chip">Industrial Plants</span><span class="chip">Commercial</span></div>
+        </div>
 
         </div>
 
-        <div class="pc">
+        <div class="pc" onclick="openProduct('amf')">
 
 <div class="pc-img">
 <img src="images/amf.jpg">
+<div class="pc-hint">Click to explore &#8594;</div>
 </div>
 
 <div class="pc-top">
@@ -2003,17 +2105,18 @@ alert("Something went wrong. Please try again.")
 </div>
 </div>
 
-<div class="pc-body">
-<p class="pc-desc">
-Automatically switches power supply between mains and generator during power failure.
-</p>
-</div>
+ <div class="pc-body">
+          <p class="pc-desc">Auto-switches to backup generator on mains failure with seamless transfer in under 10 seconds. Zero interruption to critical loads.</p>
+          <div class="specs"><div class="sr"><span class="sk">Voltage</span><span class="sv">415V</span></div><div class="sr"><span class="sk">Switching Time</span><span class="sv">&lt; 10 seconds</span></div><div class="sr"><span class="sk">Control</span><span class="sv">Microprocessor-based</span></div></div>
+          <div class="chips"><span class="chip">Hospitals</span><span class="chip">Data Centers</span></div>
+        </div>
 
 </div>
-<div class="pc">
+<div class="pc" onclick="openProduct('ev')">
 
 <div class="pc-img">
-<img src="images/ev-charger.jpg">
+<img src="images/evcharger.jpg">
+<div class="pc-hint">Click to explore &#8594;</div>
 </div>
 
 <div class="pc-top">
@@ -2024,17 +2127,18 @@ Automatically switches power supply between mains and generator during power fai
 </div>
 </div>
 
-<div class="pc-body">
-<p class="pc-desc">
-Reliable EV charging solutions for industrial and commercial installations.
-</p>
-</div>
+ <div class="pc-body">
+          <p class="pc-desc">Efficient, safe EV charging with smart app control. From 7.4 kW AC wall boxes to 240 kW DC fast chargers for all EV models.</p>
+          <div class="specs"><div class="sr"><span class="sk">AC Charging</span><span class="sv">7.4 kW to 22 kW</span></div><div class="sr"><span class="sk">DC Fast Charging</span><span class="sv">30 kW to 240 kW</span></div><div class="sr"><span class="sk">Connectivity</span><span class="sv">Wi-Fi &amp; Bluetooth</span></div></div>
+          <div class="chips"><span class="chip">EV Stations</span><span class="chip">Residential</span><span class="chip">Commercial</span></div>
+        </div>
 
 </div>
-<div class="pc">
+<div class="pc" onclick="openProduct('servo')">
 
 <div class="pc-img">
 <img src="images/servo.png">
+<div class="pc-hint">Click to explore &#8594;</div>
 </div>
 
 <div class="pc-top">
@@ -2046,16 +2150,17 @@ Reliable EV charging solutions for industrial and commercial installations.
 </div>
 
 <div class="pc-body">
-<p class="pc-desc">
-Maintains constant output voltage to protect electrical equipment.
-</p>
-</div>
+          <p class="pc-desc">Maintains constant output voltage protecting sensitive equipment from fluctuations. 1 kVA to 500 kVA range with 99% efficiency.</p>
+          <div class="specs"><div class="sr"><span class="sk">Input Voltage</span><span class="sv">180V to 450V</span></div><div class="sr"><span class="sk">Power Rating</span><span class="sv">1 kVA to 500 kVA</span></div><div class="sr"><span class="sk">Efficiency</span><span class="sv">98% to 99%</span></div></div>
+          <div class="chips"><span class="chip">IT Equipment</span><span class="chip">Medical</span><span class="chip">Machinery</span></div>
+        </div>
 
 </div>
-<div class="pc">
+<div class="pc"  onclick="openProduct('mcc')">
 
 <div class="pc-img">
 <img src="images/mcc.jpg">
+<div class="pc-hint">Click to explore &#8594;</div>
 </div>
 
 <div class="pc-top">
@@ -2066,17 +2171,18 @@ Maintains constant output voltage to protect electrical equipment.
 </div>
 </div>
 
-<div class="pc-body">
-<p class="pc-desc">
-Centralized motor control panels used in industrial automation.
-</p>
-</div>
+ <div class="pc-body">
+          <p class="pc-desc">Centralised systems to control and protect electric motors with modular design, IP-rated enclosures, and comprehensive protection relays.</p>
+          <div class="specs"><div class="sr"><span class="sk">Voltage</span><span class="sv">415V</span></div><div class="sr"><span class="sk">Control Methods</span><span class="sv">Soft Starter, VFD, DOL</span></div><div class="sr"><span class="sk">Protection</span><span class="sv">Overload, Short-Circuit</span></div></div>
+          <div class="chips"><span class="chip">Manufacturing</span><span class="chip">Water Treatment</span></div>
+        </div>
 
 </div>
-<div class="pc">
+<div class="pc"  onclick="openProduct('pcc')">
 
 <div class="pc-img">
 <img src="images/pcc.jpg">
+<div class="pc-hint">Click to explore &#8594;</div>
 </div>
 
 <div class="pc-top">
@@ -2087,11 +2193,11 @@ Centralized motor control panels used in industrial automation.
 </div>
 </div>
 
-<div class="pc-body">
-<p class="pc-desc">
-Used for controlling and distributing power to multiple circuits.
-</p>
-</div>
+ <div class="pc-body">
+          <p class="pc-desc">Main incoming and distribution switchboard for large industrial facilities. High fault-level withstand with PLC-based centralized control.</p>
+          <div class="specs"><div class="sr"><span class="sk">Voltage</span><span class="sv">415V to 33 kV</span></div><div class="sr"><span class="sk">Control</span><span class="sv">PLC-based, Manual / Auto</span></div><div class="sr"><span class="sk">Enclosure</span><span class="sv">IP55 or higher</span></div></div>
+          <div class="chips"><span class="chip">Industrial Plants</span><span class="chip">Power Generation</span></div>
+        </div>
 
 </div>
 
@@ -2325,30 +2431,19 @@ Used for controlling and distributing power to multiple circuits.
 
     <div class="contact-inner sec-inner">
 
-      <div class="lbl lbl-c">Contact</div>
-      <h2 class="t">Get In <span>Touch</span></h2>
+     <div class="lbl">Get In Touch</div>
+    <h2 class="t">Contact <span>Our Team</span></h2>
+    <p class="sub">Sales and technical support ready to help you find the right solution.</p>
 
       <div class="con-grid">
-
-        <div class="cc">
-          <div class="ci">📞</div>
-          <h4>Phone</h4>
-          <a href="tel:+919823559585">+91 9823559585</a>
-        </div>
-
-        <div class="cc">
-          <div class="ci">✉️</div>
-          <h4>Email</h4>
-          <a href="mailto:virentechnologys@gmail.com">virentechnologys@gmail.com</a>
-        </div>
-
-        <div class="cc">
-          <div class="ci">💬</div>
-          <h4>WhatsApp</h4>
-          <a href="https://wa.me/919823559585">Chat Now</a>
-        </div>
-
-      </div>
+      <div class="cc"><div class="ci">&#128231;</div><h4>Email</h4><a href="mailto:jaygharate7@gmail.com">jaygharate7@gmail.com</a></div>
+      <div class="cc"><div class="ci">&#128222;</div><h4>Phone / WhatsApp</h4><a href="tel:+919823559585">+91 98235 59585</a></div>
+      <div class="cc"><div class="ci">&#128205;</div><h4>Address</h4><p>Flat No 03, Bhuvaneswari Society, Shakti Nagar, Hiravadi, Panchvati, Nashik &#8211; 422003</p></div>
+    </div>
+      <div class="cta-strip">
+      <h3>Ready to <span>Switch on to Safer Solutions?</span> Let&#39;s talk about your requirements.</h3>
+      <button class="btn-gl" onclick="openEnquiry(null)">&#128231; Send Enquiry</button>
+    </div>
 
       <!-- CONTACT FORM -->
 
@@ -2416,11 +2511,32 @@ Used for controlling and distributing power to multiple circuits.
 
   </div>
 </div>
+<div class="modal-overlay" id="productModal" onclick="closeProductOverlay(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeProduct()">&#10005;</button>
+    <div class="modal-hero" id="mHero">
+      <div class="modal-hero-img" id="mHeroImg"></div>
+      <div class="modal-hero-content">
+        <div class="modal-tag" id="mTag"></div>
+        <h2 id="mTitle"></h2>
+      </div>
+      <div class="modal-hero-icon" id="mIcon"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section"><h4>About This Product</h4><p id="mDesc"></p></div>
+      <div class="modal-section"><h4>Technical Specifications</h4><div class="modal-specs-grid" id="mSpecs"></div></div>
+      <div class="modal-section" id="mFeatSec"><h4>Key Features</h4><div class="modal-features-grid" id="mFeats"></div></div>
+      <div class="modal-section"><h4>Applications</h4><div class="modal-apps" id="mApps"></div></div>
+      <button class="modal-enquiry-btn" id="mEnqBtn">&#128231; Enquire About This Product</button>
+    </div>
+  </div>
+</div>
 
   <footer>
 
-    <p>© 2026 Viren Technology</p>
-    <div class="ft">Power & Electrical Solutions</div>
+  <p>&#169; 2025 Viren Technology, Nashik, India. All rights reserved.</p>
+  <div class="ft">VIREN TECHNOLOGY &#8212; Switch on to Safer Solutions</div>
+  <p>ISO Certification In Process</p>
 
   </footer>
   <div id="imgPopup" class="img-popup">
